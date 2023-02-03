@@ -53,13 +53,18 @@ public class player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Ray r = new Ray(transform.position, Vector3.up * sphereHeight);
+        RaycastHit hit;
+
+        bool grounded = Physics.SphereCast(r, sphereRadius, out hit, Mathf.Abs(sphereHeight) + sphereRadius, ground);
         float camHorizontal = iactions.Camera.Horizontal.ReadValue<float>();
         cameraParent.Rotate(new Vector3(0f, cameraSpeed * camHorizontal, 0f));
+        transform.up = Vector3.Slerp(transform.up,Vector3.Slerp(grounded ? hit.normal : Vector3.up,Vector3.up,0.8f),0.05f);
         angle -= iactions.Camera.Vertical.ReadValue<float>()*cameraSpeed;
         angle = Mathf.Clamp(angle, -90f, 90f);
         camera.localRotation = Quaternion.Euler(angle, 0f, 0f);
         if (!jumping) jumping = iactions.Movement.Jump.triggered;
-        bool grounded = Physics.CheckSphere(transform.position + Vector3.up * sphereHeight, sphereRadius, ground);
+        
         float s = new Vector2(rb.velocity.x, rb.velocity.z).magnitude;
 
         camera.localPosition = new Vector3(0f, cameraBaseHeight + Mathf.Sin(Time.time * headBobFrequency) * headBobSize * (s / speed.Evaluate(speedCursor)) * (grounded ? 1f : 0f), 0f);
