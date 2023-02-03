@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -33,6 +34,10 @@ public class player : MonoBehaviour
     public float maxSpeedDamp = 0.2f;
     float speedCursorVel;
 
+    public Action OnDeath;
+
+    CheckpointManager _checkpointManager;
+
 
     public void Stun()
     {
@@ -48,6 +53,13 @@ public class player : MonoBehaviour
         iactions.Enable();
         rb = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    void Start()
+    {
+        // Connect Checkpoint Manager
+        _checkpointManager = CheckpointManager.Instance;
+        OnDeath += () => _checkpointManager.RespawnPlayerOnDeath(transform);
     }
 
     // Update is called once per frame
