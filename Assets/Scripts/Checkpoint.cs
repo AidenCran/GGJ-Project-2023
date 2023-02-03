@@ -14,7 +14,7 @@ public class Checkpoint : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (TryGetComponent<player>(out var player))
+        if (other.TryGetComponent<player>(out var player))
         {
             // Add UI Display | Checkpoint Activated
             Debug.Log("Checkpoint Activated");
