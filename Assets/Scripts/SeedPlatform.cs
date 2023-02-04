@@ -22,12 +22,10 @@ public class SeedPlatform : MonoBehaviour
         Rigidbody = GetComponent<Rigidbody>();
     }
 
-    public void ThrowSeed(float inertia)
+    public void ThrowSeed(Vector3 inertia)
     {
         _isActive = true;
-
-        var newVelocity = inertia + ThrowSpeed;
-        Rigidbody.velocity = transform.forward * newVelocity;
+        Rigidbody.velocity = inertia + ThrowSpeed * transform.forward;
         
         // Play Sound?
     }
