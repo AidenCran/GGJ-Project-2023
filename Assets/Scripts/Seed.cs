@@ -1,11 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
 using DG.Tweening;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public abstract class Seed : MonoBehaviour
+public abstract class Seed : MonoBehaviour, IWhippable
 {
     // ReSharper disable once MemberCanBePrivate.Global
     public Rigidbody Rigidbody { get; set; }
@@ -32,12 +33,18 @@ public abstract class Seed : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         if (!_isActive) return;
-        gameObject.SetActive(false);
 
-        HitAction(collision);
+        HitAction();
     }
 
-    public abstract void HitAction(Collision collision);
+    protected virtual void HitAction()
+    {
+        gameObject.SetActive(false);
+    }
 
 
+    public void OnWhipHit()
+    {
+        HitAction();
+    }
 }

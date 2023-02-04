@@ -9,8 +9,10 @@ public class SeedPlatform : Seed
 {
     [SerializeField] GameObject platformPrefab;
 
-    public override void HitAction(Collision collision)
+    protected override void HitAction()
     {
+        base.HitAction();
+        
         // Create Platform & Set Position
         var newPlatform = Instantiate(platformPrefab);
         newPlatform.SetActive(false);
