@@ -29,12 +29,13 @@ public class pickupHandler : MonoBehaviour
         if (holding)
         {
             //Throw
-            //holding.isKinematic = false;
+            holding.transform.parent = null;
+            holding.isKinematic = false;
             holding.GetComponent<Collider>().enabled = true;
-
             Seed seed;
             if (holding.TryGetComponent(out seed))
             {
+                
                 seed.ThrowSeed(p.rb.velocity, transform.forward);
             }
 
@@ -53,19 +54,23 @@ public class pickupHandler : MonoBehaviour
 
 
         holding = touching[0].attachedRigidbody;
-        //holding.isKinematic = true;
+        holding.isKinematic = true;
+        holding.transform.parent = heldItemPosition;
+        holding.transform.localPosition = Vector3.zero;
         holding.GetComponent<Collider>().enabled = false;
         
 
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
+        /*
         if (holding)
         {
             
-            holding.velocity = (heldItemPosition.position-holding.position)/Time.deltaTime;
+            holding.transform.position = heldItemPosition.position;
         }
+        */
     }
 
 

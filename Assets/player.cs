@@ -76,6 +76,10 @@ public class player : MonoBehaviour
         RaycastHit hit;
 
         bool grounded = Physics.SphereCast(r, sphereRadius, out hit, Mathf.Abs(sphereHeight) + sphereRadius, ground);
+        grounded = grounded && Mathf.Abs(Vector3.Dot(hit.normal, Vector3.up)) > 0.4f;
+
+
+
         float camHorizontal = iactions.Camera.Horizontal.ReadValue<float>();
         cameraParent.Rotate(new Vector3(0f, cameraSpeed * camHorizontal, 0f));
         transform.up = Vector3.Slerp(transform.up,Vector3.Slerp(grounded ? hit.normal : Vector3.up,Vector3.up,0.8f),0.05f);
@@ -108,14 +112,14 @@ public class player : MonoBehaviour
         RaycastHit hit;
 
         bool grounded = Physics.SphereCast(r, sphereRadius, out hit, Mathf.Abs(sphereHeight) + sphereRadius, ground);
-
+        grounded = grounded && Mathf.Abs(Vector3.Dot(hit.normal, Vector3.up)) > 0.4f;
 
         float s = Vector3.Scale(rb.velocity,ToTangent(rb.velocity,grounded ? hit.normal : Vector3.up)).magnitude;
 
         //Debug.Log(s);
 
         speedCursor = s > speedCursor ? s : Mathf.SmoothDamp(speedCursor, s, ref speedCursorVel, maxSpeedDamp);
-        Vector3 newvel = Vector3.SmoothDamp(rb.velocity, ToTangent(movement,grounded ? hit.normal : Vector3.up) * movement.magnitude * speed.Evaluate(speedCursor), ref velvel, 0.1f);
+        Vector3 newvel = Vector3.SmoothDamp(rb.velocity, ToTangent(movement,grounded ? hit.normal : Vector3.up) * movement.magnitude * speed.Evaluate(speedCursor), ref velvel, grounded ? 0.1f : 0.7f);
 
         
         if (grounded && Time.time - 0.2f > lastStunned) airStunned = false;
