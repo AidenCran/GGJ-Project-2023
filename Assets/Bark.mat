@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Ground
+  m_Name: Bark
   m_Shader: {fileID: -6465566751694194690, guid: 4b75e286e2d64db42832cee808853786, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords:
@@ -51,7 +51,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: b2619592639f2b4418951ed2ac409a6f, type: 3}
+        m_Texture: {fileID: 2800000, guid: f2c811f6681fc8f4d9db7699c8f5ea6e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskTex:
@@ -128,10 +128,10 @@ Material:
     - _GlossyReflections: 0
     - _Metallic: 0
     - _Mode: 0
-    - _Normal_Strength: -0.1
+    - _Normal_Strength: -0.0948
     - _OcclusionStrength: 1
     - _Parallax: 0.005
-    - _Parallax_Strength: 3.26
+    - _Parallax_Strength: 5.4
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
@@ -144,10 +144,10 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
-    - _TriplanarScale: 8.14
+    - _TriplanarScale: 11.78
     - _UVSec: 0
     - _WorkflowMode: 1
-    - _World_Space: 1
+    - _World_Space: 0
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
