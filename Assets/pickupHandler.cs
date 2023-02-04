@@ -32,6 +32,12 @@ public class pickupHandler : MonoBehaviour
             //holding.isKinematic = false;
             holding.GetComponent<Collider>().enabled = true;
 
+            Seed seed;
+            if (holding.TryGetComponent(out seed))
+            {
+                seed.ThrowSeed(p.rb.velocity, transform.forward);
+            }
+
             holding = null;
             return;
         }

@@ -6,7 +6,8 @@ using UnityEngine;
 public class player : MonoBehaviour
 {
     public Input iactions;
-    Rigidbody rb;
+    [System.NonSerialized]
+    public Rigidbody rb;
     public Transform cameraParent;
     public Transform camera;
     float angle = 0f;
