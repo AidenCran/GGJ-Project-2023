@@ -12,6 +12,11 @@ public class NavigationReference : MonoBehaviour
         catch { }
     }
 
+    public void OpenURL(string URL)
+    {
+        Application.OpenURL(URL);
+    }
+
     public void ChangeScene(string str)
     {
         _navigation.ChangeScene(str);
