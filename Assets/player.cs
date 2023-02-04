@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class player : MonoBehaviour
 {
-    Input iactions;
+    public Input iactions;
     Rigidbody rb;
     public Transform cameraParent;
     public Transform camera;
@@ -28,6 +28,10 @@ public class player : MonoBehaviour
     bool airStunned = false;
     [System.NonSerialized]
     float lastStunned;
+    [System.NonSerialized]
+    float jumpTime;
+    [System.NonSerialized]
+    float jumpBufferTime;
 
 
     float speedCursor = 0f;
@@ -49,6 +53,8 @@ public class player : MonoBehaviour
     void Awake()
     {
         lastStunned = Time.time - 0.2f;
+        jumpTime = Time.time - 0.4f;
+        jumpBufferTime = Time.time - 0.4f;
         iactions = new Input();
         iactions.Enable();
         rb = GetComponent<Rigidbody>();
@@ -75,7 +81,11 @@ public class player : MonoBehaviour
         angle -= iactions.Camera.Vertical.ReadValue<float>()*cameraSpeed;
         angle = Mathf.Clamp(angle, -90f, 90f);
         camera.localRotation = Quaternion.Euler(angle, 0f, 0f);
-        if (!jumping) jumping = iactions.Movement.Jump.triggered;
+        if (!jumping)
+        {
+            jumping = iactions.Movement.Jump.triggered;
+            if (jumping) jumpBufferTime = Time.time;
+        }
         
         float s = new Vector2(rb.velocity.x, rb.velocity.z).magnitude;
 
@@ -90,40 +100,51 @@ public class player : MonoBehaviour
         float oldyvel = rb.velocity.y;
         Vector2 relmovement = new Vector2(iactions.Movement.Horizontal.ReadValue<float>(), iactions.Movement.Vertical.ReadValue<float>());
 
-        Vector3 movement = (cameraParent.right * relmovement.x + cameraParent.forward * relmovement.y);
-        movement.y = 0f;
-        movement = movement.normalized;
-
-        float s = new Vector2(rb.velocity.x, rb.velocity.z).magnitude;
-
-        speedCursor = s > speedCursor ? s : Mathf.SmoothDamp(speedCursor, s, ref speedCursorVel, maxSpeedDamp);
-        Vector3 newvel = Vector3.SmoothDamp(rb.velocity, movement * speed.Evaluate(speedCursor), ref velvel, 0.1f);
-
+        Vector3 movement = (cameraParent.right * relmovement.x + cameraParent.forward * relmovement.y).normalized;
+        //movement.y = 0f;
+        //movement = movement.normalized;
         Ray r = new Ray(transform.position, Vector3.up * sphereHeight);
         RaycastHit hit;
 
-        bool grounded = Physics.SphereCast(r, sphereRadius,out hit, Mathf.Abs(sphereHeight)+sphereRadius,ground);
+        bool grounded = Physics.SphereCast(r, sphereRadius, out hit, Mathf.Abs(sphereHeight) + sphereRadius, ground);
+
+
+        float s = Vector3.Scale(rb.velocity,ToTangent(rb.velocity,grounded ? hit.normal : Vector3.up)).magnitude;
+
+        //Debug.Log(s);
+
+        speedCursor = s > speedCursor ? s : Mathf.SmoothDamp(speedCursor, s, ref speedCursorVel, maxSpeedDamp);
+        Vector3 newvel = Vector3.SmoothDamp(rb.velocity, ToTangent(movement,grounded ? hit.normal : Vector3.up) * movement.magnitude * speed.Evaluate(speedCursor), ref velvel, 0.1f);
+
+        
         if (grounded && Time.time - 0.2f > lastStunned) airStunned = false;
         if (airStunned) return;
 
         groundIndicator.SetActive(grounded);
 
+
+        if (Time.time - jumpBufferTime > 0.4f) jumping = false;
+
         if (grounded && jumping)
         {
-            oldyvel = Mathf.Sqrt(-2f * Physics.gravity.y * jumpHeight);
+            newvel.y = Mathf.Sqrt(-2f * Physics.gravity.y * jumpHeight);
             jumping = false;
+            jumpTime = Time.time;
         }
 
-        
 
 
-        newvel.y = oldyvel;
-        rb.velocity = newvel;
-        if (grounded && newvel.y < (Physics.gravity.y * jumpHeight))
+
+        if (!grounded)
         {
-            
-            rb.velocity = Vector3.Slerp(rb.velocity,ToTangent(rb.velocity, hit.normal) * rb.velocity.magnitude,0.1f);
-            rb.velocity += hit.normal * -5f;
+            newvel.y = oldyvel;
+            jumpTime = Time.time - 1f;
+        }
+        rb.velocity = newvel;
+        if (grounded && (Time.time - jumpTime > 0.4f))
+        {
+            rb.useGravity = false;
+            //rb.velocity += hit.normal * -5f;
         }
     }
 

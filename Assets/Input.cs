@@ -182,6 +182,34 @@ public partial class @Input : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Interaction"",
+            ""id"": ""aeb53863-36a6-499a-bafa-700bf863e406"",
+            ""actions"": [
+                {
+                    ""name"": ""Pickup"",
+                    ""type"": ""Button"",
+                    ""id"": ""831bc516-7b24-4397-968b-5b8b11b50ecc"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""83ae22f8-52a8-46dd-8b5e-a2a7fc064bd1"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pickup"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -195,6 +223,9 @@ public partial class @Input : IInputActionCollection2, IDisposable
         m_Camera = asset.FindActionMap("Camera", throwIfNotFound: true);
         m_Camera_Horizontal = m_Camera.FindAction("Horizontal", throwIfNotFound: true);
         m_Camera_Vertical = m_Camera.FindAction("Vertical", throwIfNotFound: true);
+        // Interaction
+        m_Interaction = asset.FindActionMap("Interaction", throwIfNotFound: true);
+        m_Interaction_Pickup = m_Interaction.FindAction("Pickup", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -340,6 +371,39 @@ public partial class @Input : IInputActionCollection2, IDisposable
         }
     }
     public CameraActions @Camera => new CameraActions(this);
+
+    // Interaction
+    private readonly InputActionMap m_Interaction;
+    private IInteractionActions m_InteractionActionsCallbackInterface;
+    private readonly InputAction m_Interaction_Pickup;
+    public struct InteractionActions
+    {
+        private @Input m_Wrapper;
+        public InteractionActions(@Input wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Pickup => m_Wrapper.m_Interaction_Pickup;
+        public InputActionMap Get() { return m_Wrapper.m_Interaction; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(InteractionActions set) { return set.Get(); }
+        public void SetCallbacks(IInteractionActions instance)
+        {
+            if (m_Wrapper.m_InteractionActionsCallbackInterface != null)
+            {
+                @Pickup.started -= m_Wrapper.m_InteractionActionsCallbackInterface.OnPickup;
+                @Pickup.performed -= m_Wrapper.m_InteractionActionsCallbackInterface.OnPickup;
+                @Pickup.canceled -= m_Wrapper.m_InteractionActionsCallbackInterface.OnPickup;
+            }
+            m_Wrapper.m_InteractionActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Pickup.started += instance.OnPickup;
+                @Pickup.performed += instance.OnPickup;
+                @Pickup.canceled += instance.OnPickup;
+            }
+        }
+    }
+    public InteractionActions @Interaction => new InteractionActions(this);
     public interface IMovementActions
     {
         void OnVertical(InputAction.CallbackContext context);
@@ -350,5 +414,9 @@ public partial class @Input : IInputActionCollection2, IDisposable
     {
         void OnHorizontal(InputAction.CallbackContext context);
         void OnVertical(InputAction.CallbackContext context);
+    }
+    public interface IInteractionActions
+    {
+        void OnPickup(InputAction.CallbackContext context);
     }
 }
