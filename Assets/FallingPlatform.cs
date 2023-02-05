@@ -15,9 +15,9 @@ public class FallingPlatform : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnCollisionEnter(Collision collision)
     {
-        if (TryGetComponent<player>(out var player))
+        if (collision.gameObject.TryGetComponent<player>(out var player))
         {
             StartCoroutine(ReleasePlatform());
         }

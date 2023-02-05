@@ -51,9 +51,9 @@ public class TimerController : MonoBehaviour
     [SerializeField] Color endColor;
     
     // Time in seconds
-    const float FirstPlaceTime = 90f;
-    const float SecondPlaceTime = 150f;
-    const float ThirdPlaceTime = 180f;
+    public float FirstPlaceTime = 90f;
+    public float SecondPlaceTime = 150f;
+    public float ThirdPlaceTime = 180f;
     
     float _timerValue;
 
@@ -82,6 +82,6 @@ public class TimerController : MonoBehaviour
     {
         _timerValue += 1 * Time.deltaTime;
         var time = TimeSpan.FromSeconds(_timerValue);
-        totalTimerText.text = $"{time.Minutes}:{time.Seconds}";
+        totalTimerText.text = $"{time.Minutes}:{time.Seconds.ToString().PadLeft(2,'0')}.{time.Milliseconds.ToString().PadLeft(3,'0')}";
     }
 }

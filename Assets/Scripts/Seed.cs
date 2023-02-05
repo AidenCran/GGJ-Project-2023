@@ -11,6 +11,9 @@ public abstract class Seed : MonoBehaviour, IWhippable
     // ReSharper disable once MemberCanBePrivate.Global
     public Rigidbody Rigidbody { get; set; }
 
+    public AudioClip throwSound;
+    public AudioClip hitSound;
+
 
     public float ThrowSpeed = 10;
 
@@ -27,7 +30,7 @@ public abstract class Seed : MonoBehaviour, IWhippable
         _isActive = true;
         Rigidbody.velocity = inertia + ThrowSpeed * direction;
 
-        // Play Sound?
+        soundPool.Play(throwSound, transform.position);
     }
 
     void OnCollisionEnter(Collision collision)
