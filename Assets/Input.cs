@@ -195,6 +195,15 @@ public partial class @Input : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Whip"",
+                    ""type"": ""Button"",
+                    ""id"": ""e325d8bf-cd51-4405-9600-29b24303ee48"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -206,6 +215,17 @@ public partial class @Input : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Pickup"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7cbab078-2156-41cb-b652-ab348d1895ff"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Whip"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -226,6 +246,7 @@ public partial class @Input : IInputActionCollection2, IDisposable
         // Interaction
         m_Interaction = asset.FindActionMap("Interaction", throwIfNotFound: true);
         m_Interaction_Pickup = m_Interaction.FindAction("Pickup", throwIfNotFound: true);
+        m_Interaction_Whip = m_Interaction.FindAction("Whip", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -376,11 +397,13 @@ public partial class @Input : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Interaction;
     private IInteractionActions m_InteractionActionsCallbackInterface;
     private readonly InputAction m_Interaction_Pickup;
+    private readonly InputAction m_Interaction_Whip;
     public struct InteractionActions
     {
         private @Input m_Wrapper;
         public InteractionActions(@Input wrapper) { m_Wrapper = wrapper; }
         public InputAction @Pickup => m_Wrapper.m_Interaction_Pickup;
+        public InputAction @Whip => m_Wrapper.m_Interaction_Whip;
         public InputActionMap Get() { return m_Wrapper.m_Interaction; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -393,6 +416,9 @@ public partial class @Input : IInputActionCollection2, IDisposable
                 @Pickup.started -= m_Wrapper.m_InteractionActionsCallbackInterface.OnPickup;
                 @Pickup.performed -= m_Wrapper.m_InteractionActionsCallbackInterface.OnPickup;
                 @Pickup.canceled -= m_Wrapper.m_InteractionActionsCallbackInterface.OnPickup;
+                @Whip.started -= m_Wrapper.m_InteractionActionsCallbackInterface.OnWhip;
+                @Whip.performed -= m_Wrapper.m_InteractionActionsCallbackInterface.OnWhip;
+                @Whip.canceled -= m_Wrapper.m_InteractionActionsCallbackInterface.OnWhip;
             }
             m_Wrapper.m_InteractionActionsCallbackInterface = instance;
             if (instance != null)
@@ -400,6 +426,9 @@ public partial class @Input : IInputActionCollection2, IDisposable
                 @Pickup.started += instance.OnPickup;
                 @Pickup.performed += instance.OnPickup;
                 @Pickup.canceled += instance.OnPickup;
+                @Whip.started += instance.OnWhip;
+                @Whip.performed += instance.OnWhip;
+                @Whip.canceled += instance.OnWhip;
             }
         }
     }
@@ -418,5 +447,6 @@ public partial class @Input : IInputActionCollection2, IDisposable
     public interface IInteractionActions
     {
         void OnPickup(InputAction.CallbackContext context);
+        void OnWhip(InputAction.CallbackContext context);
     }
 }

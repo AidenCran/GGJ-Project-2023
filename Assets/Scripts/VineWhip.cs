@@ -7,25 +7,40 @@ using UnityEngine;
 public class VineWhip : MonoBehaviour
 {
     [SerializeField] float maxDist = 10;
-    bool isHeld;
+    public LayerMask lm;
+    public player p;
+    public Animator anim;
 
     void Start()
     {
-        // ADD BELOW FUNCTION TO ON PREFORMED
+        p.iactions.Interaction.Whip.performed += ctx => OnActive();
     }
 
     // On <LMB>
     void OnActive()
     {
-        if (!isHeld) return;
+        anim.SetTrigger("activate");
+        StartCoroutine(whip());
+    }
 
+
+    IEnumerator whip()
+    {
+        yield return new WaitForSeconds(0.2f);
+        Ray r = new Ray(transform.position, transform.forward);
         // Raycast forward
-        if (!Physics.Raycast(transform.position, transform.forward, out var hit, maxDist)) return;
-        
+        if (!Physics.SphereCast(r, 1f, out var hit, maxDist, lm, QueryTriggerInteraction.Ignore)) yield break;
+        Debug.Log("whipping");
+
         // Check for objects
         if (hit.transform.TryGetComponent<IWhippable>(out var whip))
         {
             whip.OnWhipHit();
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawRay(new Ray(transform.position, transform.forward*maxDist));
     }
 }

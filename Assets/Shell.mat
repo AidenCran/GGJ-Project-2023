@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Rock
+  m_Name: Shell
   m_Shader: {fileID: -6465566751694194690, guid: 49c14b9cff6a8bf4bbbb90a7b4b2deb9, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
