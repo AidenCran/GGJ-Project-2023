@@ -10,6 +10,7 @@ public class pickupHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        last = Time.time;
         p.iactions.Interaction.Pickup.performed += ctx => TriggerPickup();
     }
 
@@ -20,11 +21,14 @@ public class pickupHandler : MonoBehaviour
     public LayerMask pickupable;
     public Transform heldItemPosition;
     Vector3 heldvel;
+    float last = 0f;
 
 
 
     public void TriggerPickup()
     {
+        if (Time.time - last < 0.2f) return;
+        last = Time.time;
         Debug.Log("picking up");
         if (holding)
         {

@@ -42,6 +42,8 @@ public abstract class Seed : MonoBehaviour, IWhippable
 
     protected virtual void HitAction()
     {
+        soundPool.Play(hitSound, transform.position);
+
         gameObject.SetActive(false);
     }
 

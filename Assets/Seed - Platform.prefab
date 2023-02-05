@@ -129,6 +129,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ed3643e52126f4b962fd9d21277c89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  throwSound: {fileID: 8300000, guid: 646aa43aca0f65f49885233c878ccba8, type: 3}
+  hitSound: {fileID: 8300000, guid: 98b5e033ea549384c86f37e81692ed56, type: 3}
   ThrowSpeed: 40
   platformPrefab: {fileID: 9138272103504130536, guid: b175484d5f3052043aacc6a63c6db466, type: 3}
 --- !u!1 &3629876216373241912
