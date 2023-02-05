@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class player : MonoBehaviour
 {
@@ -21,7 +22,7 @@ public class player : MonoBehaviour
             return;
         }
 
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
 
     #endregion
@@ -89,6 +90,7 @@ public class player : MonoBehaviour
         // Connect Checkpoint Manager
         _checkpointManager = CheckpointManager.Instance;
         OnDeath += () => _checkpointManager.RespawnPlayerOnDeath(transform);
+        iactions.Interaction.Restart.performed += ctx => Navigation.instance.ChangeScene(SceneManager.GetActiveScene().name);
         Cursor.lockState = CursorLockMode.Locked;
 
     }

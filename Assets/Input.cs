@@ -204,6 +204,15 @@ public partial class @Input : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Restart"",
+                    ""type"": ""Button"",
+                    ""id"": ""91fd060f-55b3-40d9-a664-5fc727600bce"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -228,6 +237,17 @@ public partial class @Input : IInputActionCollection2, IDisposable
                     ""action"": ""Whip"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a2a40e55-64c2-4122-9de3-8da9a986c5f9"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Restart"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -247,6 +267,7 @@ public partial class @Input : IInputActionCollection2, IDisposable
         m_Interaction = asset.FindActionMap("Interaction", throwIfNotFound: true);
         m_Interaction_Pickup = m_Interaction.FindAction("Pickup", throwIfNotFound: true);
         m_Interaction_Whip = m_Interaction.FindAction("Whip", throwIfNotFound: true);
+        m_Interaction_Restart = m_Interaction.FindAction("Restart", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -398,12 +419,14 @@ public partial class @Input : IInputActionCollection2, IDisposable
     private IInteractionActions m_InteractionActionsCallbackInterface;
     private readonly InputAction m_Interaction_Pickup;
     private readonly InputAction m_Interaction_Whip;
+    private readonly InputAction m_Interaction_Restart;
     public struct InteractionActions
     {
         private @Input m_Wrapper;
         public InteractionActions(@Input wrapper) { m_Wrapper = wrapper; }
         public InputAction @Pickup => m_Wrapper.m_Interaction_Pickup;
         public InputAction @Whip => m_Wrapper.m_Interaction_Whip;
+        public InputAction @Restart => m_Wrapper.m_Interaction_Restart;
         public InputActionMap Get() { return m_Wrapper.m_Interaction; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -419,6 +442,9 @@ public partial class @Input : IInputActionCollection2, IDisposable
                 @Whip.started -= m_Wrapper.m_InteractionActionsCallbackInterface.OnWhip;
                 @Whip.performed -= m_Wrapper.m_InteractionActionsCallbackInterface.OnWhip;
                 @Whip.canceled -= m_Wrapper.m_InteractionActionsCallbackInterface.OnWhip;
+                @Restart.started -= m_Wrapper.m_InteractionActionsCallbackInterface.OnRestart;
+                @Restart.performed -= m_Wrapper.m_InteractionActionsCallbackInterface.OnRestart;
+                @Restart.canceled -= m_Wrapper.m_InteractionActionsCallbackInterface.OnRestart;
             }
             m_Wrapper.m_InteractionActionsCallbackInterface = instance;
             if (instance != null)
@@ -429,6 +455,9 @@ public partial class @Input : IInputActionCollection2, IDisposable
                 @Whip.started += instance.OnWhip;
                 @Whip.performed += instance.OnWhip;
                 @Whip.canceled += instance.OnWhip;
+                @Restart.started += instance.OnRestart;
+                @Restart.performed += instance.OnRestart;
+                @Restart.canceled += instance.OnRestart;
             }
         }
     }
@@ -448,5 +477,6 @@ public partial class @Input : IInputActionCollection2, IDisposable
     {
         void OnPickup(InputAction.CallbackContext context);
         void OnWhip(InputAction.CallbackContext context);
+        void OnRestart(InputAction.CallbackContext context);
     }
 }
