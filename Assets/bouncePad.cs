@@ -33,7 +33,7 @@ public class bouncePad : MonoBehaviour
 
         player p;
         if (stun && other.TryGetComponent(out p)) p.Stun();
-        soundPool.Play(sound, transform.position);
+        soundPool.Play(sound, transform.position,0.5f);
     }
 
 
