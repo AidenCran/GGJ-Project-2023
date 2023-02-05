@@ -80,7 +80,6 @@ public class player : MonoBehaviour
         iactions = new Input();
         iactions.Enable();
         rb = GetComponent<Rigidbody>();
-        Cursor.lockState = CursorLockMode.Locked;
         
         Singleton();
     }
@@ -90,6 +89,8 @@ public class player : MonoBehaviour
         // Connect Checkpoint Manager
         _checkpointManager = CheckpointManager.Instance;
         OnDeath += () => _checkpointManager.RespawnPlayerOnDeath(transform);
+        Cursor.lockState = CursorLockMode.Locked;
+
     }
 
     // Update is called once per frame
