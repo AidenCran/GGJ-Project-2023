@@ -130,9 +130,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwSound: {fileID: 8300000, guid: 646aa43aca0f65f49885233c878ccba8, type: 3}
-  hitSound: {fileID: 8300000, guid: 41c8745f12e87d64dad0c0b69b615e52, type: 3}
+  hitSound: {fileID: 8300000, guid: 87cca90ef96178947a04fbb04fea8074, type: 3}
   ThrowSpeed: 25
-  velocityOverride: {x: 0, y: 5, z: 0}
+  velocityOverride: {x: 0, y: 10, z: 0}
 --- !u!1 &3629876216373241912
 GameObject:
   m_ObjectHideFlags: 0

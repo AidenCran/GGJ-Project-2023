@@ -704,7 +704,7 @@ MonoBehaviour:
   sphereRadius: 0.44
   ground:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 640
   groundIndicator: {fileID: 0}
   maxSpeedDamp: 0.5
 --- !u!1001 &7975264927918889839
@@ -869,6 +869,10 @@ PrefabInstance:
     - target: {fileID: 8417361359673230750, guid: e74a51a1f3e40f842a6421e6968c2885, type: 3}
       propertyPath: m_AABB.m_Extent.z
       value: 5.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 8417361359673230750, guid: e74a51a1f3e40f842a6421e6968c2885, type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8417361359673230750, guid: e74a51a1f3e40f842a6421e6968c2885, type: 3}
       propertyPath: m_Materials.Array.data[0]

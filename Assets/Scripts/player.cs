@@ -101,7 +101,17 @@ public class player : MonoBehaviour
         OnDeath += () => _checkpointManager.RespawnPlayerOnDeath(transform);
         iactions.Interaction.Restart.performed += ctx =>
         {
-            if (Time.timeSinceLevelLoad > 3f) Navigation.instance.ChangeScene(SceneManager.GetActiveScene().name);
+            if (Time.timeSinceLevelLoad > 0.5f) Navigation.instance.ChangeScene(SceneManager.GetActiveScene().name);
+
+        };
+        iactions.Interaction.Menu.performed += ctx =>
+        {
+
+            if (Time.timeSinceLevelLoad > 0.5f)
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Navigation.instance.ChangeScene("MainMenu");
+            }
 
         };
     }

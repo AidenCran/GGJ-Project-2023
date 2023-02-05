@@ -38,6 +38,7 @@ public class Navigation : MonoBehaviour
 
     public void ChangeScene(string sceneName)
     {
+        if (player.Instance) player.Instance.iactions.Dispose();
         _canvasGroup.alpha = 1;
         StartCoroutine(LoadSceneAsync(sceneName));
     }

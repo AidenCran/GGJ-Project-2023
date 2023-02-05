@@ -11,6 +11,8 @@ public class FallingPlatform : MonoBehaviour
     
     [SerializeField] float delay = 3;
 
+    public AudioClip sound;
+
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
@@ -20,6 +22,7 @@ public class FallingPlatform : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent<player>(out var player))
         {
+            soundPool.Play(sound, transform.position);
             StartCoroutine(ReleasePlatform());
         }
     }
@@ -32,5 +35,7 @@ public class FallingPlatform : MonoBehaviour
 
         // Release Constraints
         _rb.constraints = RigidbodyConstraints.None;
+
+
     }
 }

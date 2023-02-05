@@ -81,7 +81,10 @@ public class SoundManager : MonoBehaviour
         soundSource.Play();
     }
 
-    public void PlayMenuMusic() => PlayMusic(menuMusic.SelectRandom());
+    public void PlayMenuMusic()
+    {
+        PlayMusic(menuMusic.SelectRandom());
+    }
 
     
     [SerializeField] AudioClip FirstLevelClip;
@@ -92,6 +95,8 @@ public class SoundManager : MonoBehaviour
 
     IEnumerator PlayLevelMusic(AudioClip clip)
     {
+        StopAllCoroutines();
+
         PlayMusic(clip);
         yield return Helper.GetWait(clip.length);
         StartCoroutine(PlayLevelMusic(levelMusic.SelectRandom()));

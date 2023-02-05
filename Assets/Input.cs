@@ -213,6 +213,15 @@ public partial class @Input : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Menu"",
+                    ""type"": ""Button"",
+                    ""id"": ""a3975a91-6f32-40a0-94a1-9521c4ac7dbd"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -248,6 +257,17 @@ public partial class @Input : IInputActionCollection2, IDisposable
                     ""action"": ""Restart"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""31103001-6763-4def-a214-833a87aa2907"",
+                    ""path"": ""<Keyboard>/m"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Menu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -268,6 +288,7 @@ public partial class @Input : IInputActionCollection2, IDisposable
         m_Interaction_Pickup = m_Interaction.FindAction("Pickup", throwIfNotFound: true);
         m_Interaction_Whip = m_Interaction.FindAction("Whip", throwIfNotFound: true);
         m_Interaction_Restart = m_Interaction.FindAction("Restart", throwIfNotFound: true);
+        m_Interaction_Menu = m_Interaction.FindAction("Menu", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -420,6 +441,7 @@ public partial class @Input : IInputActionCollection2, IDisposable
     private readonly InputAction m_Interaction_Pickup;
     private readonly InputAction m_Interaction_Whip;
     private readonly InputAction m_Interaction_Restart;
+    private readonly InputAction m_Interaction_Menu;
     public struct InteractionActions
     {
         private @Input m_Wrapper;
@@ -427,6 +449,7 @@ public partial class @Input : IInputActionCollection2, IDisposable
         public InputAction @Pickup => m_Wrapper.m_Interaction_Pickup;
         public InputAction @Whip => m_Wrapper.m_Interaction_Whip;
         public InputAction @Restart => m_Wrapper.m_Interaction_Restart;
+        public InputAction @Menu => m_Wrapper.m_Interaction_Menu;
         public InputActionMap Get() { return m_Wrapper.m_Interaction; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -445,6 +468,9 @@ public partial class @Input : IInputActionCollection2, IDisposable
                 @Restart.started -= m_Wrapper.m_InteractionActionsCallbackInterface.OnRestart;
                 @Restart.performed -= m_Wrapper.m_InteractionActionsCallbackInterface.OnRestart;
                 @Restart.canceled -= m_Wrapper.m_InteractionActionsCallbackInterface.OnRestart;
+                @Menu.started -= m_Wrapper.m_InteractionActionsCallbackInterface.OnMenu;
+                @Menu.performed -= m_Wrapper.m_InteractionActionsCallbackInterface.OnMenu;
+                @Menu.canceled -= m_Wrapper.m_InteractionActionsCallbackInterface.OnMenu;
             }
             m_Wrapper.m_InteractionActionsCallbackInterface = instance;
             if (instance != null)
@@ -458,6 +484,9 @@ public partial class @Input : IInputActionCollection2, IDisposable
                 @Restart.started += instance.OnRestart;
                 @Restart.performed += instance.OnRestart;
                 @Restart.canceled += instance.OnRestart;
+                @Menu.started += instance.OnMenu;
+                @Menu.performed += instance.OnMenu;
+                @Menu.canceled += instance.OnMenu;
             }
         }
     }
@@ -478,5 +507,6 @@ public partial class @Input : IInputActionCollection2, IDisposable
         void OnPickup(InputAction.CallbackContext context);
         void OnWhip(InputAction.CallbackContext context);
         void OnRestart(InputAction.CallbackContext context);
+        void OnMenu(InputAction.CallbackContext context);
     }
 }
