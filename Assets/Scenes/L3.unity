@@ -2490,15 +2490,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8576964020657674551, guid: 5b93001a63b3bf64f9a184c94bbb6aef, type: 3}
       propertyPath: FirstPlaceTime
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 8576964020657674551, guid: 5b93001a63b3bf64f9a184c94bbb6aef, type: 3}
-      propertyPath: ThirdPlaceTime
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8576964020657674551, guid: 5b93001a63b3bf64f9a184c94bbb6aef, type: 3}
+      propertyPath: ThirdPlaceTime
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 8576964020657674551, guid: 5b93001a63b3bf64f9a184c94bbb6aef, type: 3}
       propertyPath: SecondPlaceTime
-      value: 35
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 8576964021151556217, guid: 5b93001a63b3bf64f9a184c94bbb6aef, type: 3}
       propertyPath: m_Pivot.x
