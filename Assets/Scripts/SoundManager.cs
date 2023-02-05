@@ -45,8 +45,6 @@ public class SoundManager : MonoBehaviour
     public float musicVol => musicSource.volume;
     public float soundVol => soundSource.volume;
 
-    public List<AudioClip> randomBackgroundSounds = new();
-
     public void SetMusicVolume(float x)
     {
         _setVolume = x;
@@ -84,7 +82,10 @@ public class SoundManager : MonoBehaviour
     }
 
     public void PlayMenuMusic() => PlayMusic(menuMusic.SelectRandom());
-    public void PlayLevelMusic() => PlayMusic(levelMusic.SelectRandom());
+    public void PlayLevelMusic()
+    {
+        PlayMusic(levelMusic.SelectRandom());
+    }
 
     public void PlayDefaultMusic() => PlayMusic(defaultMusic);
 }

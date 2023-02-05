@@ -49,9 +49,10 @@ public class WinState : MonoBehaviour
         
         fadeUI.ShowUI(.5f);
 
+        StartCoroutine(QuickPause());
         IEnumerator QuickPause()
         {
-            yield return Helper.GetWait(1);
+            yield return Helper.GetWait(0.6f);
             Time.timeScale = 0;
         }
     }
