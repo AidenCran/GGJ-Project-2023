@@ -11,4 +11,6 @@ public class SoundReference : MonoBehaviour
     public void PlayMusic(AudioClip clip) => soundManager.PlayMusic(clip);
 
     public void PlaySound(AudioClip clip) => soundManager.PlaySound(clip);
+
+    public void PlayLevelMusic() => soundManager.PlayLevelMusic();
 }

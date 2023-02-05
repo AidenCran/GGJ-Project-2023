@@ -747,6 +747,7 @@ GameObject:
   - component: {fileID: 171907650}
   - component: {fileID: 171907649}
   - component: {fileID: 171907652}
+  - component: {fileID: 171907653}
   m_Layer: 5
   m_Name: Play Level (1)
   m_TagString: Untagged
@@ -819,6 +820,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 171907653}
+        m_TargetAssemblyTypeName: SoundReference, Assembly-CSharp
+        m_MethodName: PlayLevelMusic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1093527579}
         m_TargetAssemblyTypeName: NavigationReference, Assembly-CSharp
         m_MethodName: ChangeScene
@@ -879,6 +892,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55c443d510d78534e9d13997cf6af1b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &171907653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171907647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb34d13dcb585d64391c3e050a34567e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &172097268
@@ -1292,6 +1317,7 @@ GameObject:
   - component: {fileID: 244558278}
   - component: {fileID: 244558277}
   - component: {fileID: 244558280}
+  - component: {fileID: 244558281}
   m_Layer: 5
   m_Name: Play Level (4)
   m_TagString: Untagged
@@ -1364,6 +1390,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 171907653}
+        m_TargetAssemblyTypeName: SoundReference, Assembly-CSharp
+        m_MethodName: PlayLevelMusic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1093527579}
         m_TargetAssemblyTypeName: NavigationReference, Assembly-CSharp
         m_MethodName: ChangeScene
@@ -1424,6 +1462,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55c443d510d78534e9d13997cf6af1b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &244558281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 244558275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb34d13dcb585d64391c3e050a34567e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &263187047
@@ -2793,7 +2843,7 @@ GameObject:
   - component: {fileID: 624956429}
   - component: {fileID: 624956428}
   m_Layer: 0
-  m_Name: w
+  m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4435,8 +4485,9 @@ MonoBehaviour:
   menuMusic:
   - {fileID: 8300000, guid: bc3f9772536484042b75bdcb6020cd58, type: 3}
   levelMusic:
-  - {fileID: 8300000, guid: bc3f9772536484042b75bdcb6020cd58, type: 3}
-  randomBackgroundSounds: []
+  - {fileID: 8300000, guid: 4879595ff40c92942ab51283e120b6b8, type: 3}
+  - {fileID: 8300000, guid: 4b5d3ae0b390fd44b92c72da236d478d, type: 3}
+  FirstLevelClip: {fileID: 8300000, guid: 0b86e127fab487b4cbf1f5f8d70ff32c, type: 3}
 --- !u!4 &901448028
 Transform:
   m_ObjectHideFlags: 0
@@ -4506,6 +4557,7 @@ GameObject:
   - component: {fileID: 1027072717}
   - component: {fileID: 1027072716}
   - component: {fileID: 1027072719}
+  - component: {fileID: 1027072720}
   m_Layer: 5
   m_Name: Play Level (2)
   m_TagString: Untagged
@@ -4578,6 +4630,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 171907653}
+        m_TargetAssemblyTypeName: SoundReference, Assembly-CSharp
+        m_MethodName: PlayLevelMusic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1093527579}
         m_TargetAssemblyTypeName: NavigationReference, Assembly-CSharp
         m_MethodName: ChangeScene
@@ -4638,6 +4702,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55c443d510d78534e9d13997cf6af1b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1027072720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1027072714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb34d13dcb585d64391c3e050a34567e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1039216136
@@ -4800,6 +4876,7 @@ GameObject:
   - component: {fileID: 1093527577}
   - component: {fileID: 1093527576}
   - component: {fileID: 1093527579}
+  - component: {fileID: 1093527580}
   m_Layer: 5
   m_Name: Play Level (5)
   m_TagString: Untagged
@@ -4872,6 +4949,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 171907653}
+        m_TargetAssemblyTypeName: SoundReference, Assembly-CSharp
+        m_MethodName: PlayLevelMusic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1093527579}
         m_TargetAssemblyTypeName: NavigationReference, Assembly-CSharp
         m_MethodName: ChangeScene
@@ -4932,6 +5021,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55c443d510d78534e9d13997cf6af1b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1093527580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1093527574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb34d13dcb585d64391c3e050a34567e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1167868199
@@ -5578,6 +5679,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1399291761
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1399291763}
+  - component: {fileID: 1399291762}
+  m_Layer: 0
+  m_Name: '- AudioSetMenuMusic'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1399291762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1399291761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81f2b5b7c2d25394086341c91e0b45ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1399291763
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1399291761}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1416168638
 GameObject:
@@ -7562,6 +7707,7 @@ GameObject:
   - component: {fileID: 2025968631}
   - component: {fileID: 2025968630}
   - component: {fileID: 2025968633}
+  - component: {fileID: 2025968634}
   m_Layer: 5
   m_Name: Play Level (3)
   m_TagString: Untagged
@@ -7634,6 +7780,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 171907653}
+        m_TargetAssemblyTypeName: SoundReference, Assembly-CSharp
+        m_MethodName: PlayLevelMusic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1093527579}
         m_TargetAssemblyTypeName: NavigationReference, Assembly-CSharp
         m_MethodName: ChangeScene
@@ -7694,6 +7852,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55c443d510d78534e9d13997cf6af1b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2025968634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2025968628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb34d13dcb585d64391c3e050a34567e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2041651018
