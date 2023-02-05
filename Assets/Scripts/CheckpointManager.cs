@@ -20,8 +20,6 @@ public class CheckpointManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
-        DontDestroyOnLoad(gameObject);
     }
 
     #endregion
