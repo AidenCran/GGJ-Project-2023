@@ -131,7 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   throwSound: {fileID: 8300000, guid: 646aa43aca0f65f49885233c878ccba8, type: 3}
   hitSound: {fileID: 8300000, guid: 98b5e033ea549384c86f37e81692ed56, type: 3}
-  ThrowSpeed: 20
+  ThrowSpeed: 14
   platformPrefab: {fileID: 9138272103504130536, guid: b175484d5f3052043aacc6a63c6db466, type: 3}
 --- !u!1 &3629876216373241912
 GameObject:
