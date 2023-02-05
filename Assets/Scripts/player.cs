@@ -87,11 +87,23 @@ public class player : MonoBehaviour
 
     void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+
+        if (!Navigation.instance)
+        {
+            SceneManager.LoadScene("MainMenu");
+            Cursor.lockState = CursorLockMode.None;
+        }
+
+
         // Connect Checkpoint Manager
         _checkpointManager = CheckpointManager.Instance;
         OnDeath += () => _checkpointManager.RespawnPlayerOnDeath(transform);
-        iactions.Interaction.Restart.performed += ctx => Navigation.instance.ChangeScene(SceneManager.GetActiveScene().name);
-        Cursor.lockState = CursorLockMode.Locked;
+        iactions.Interaction.Restart.performed += ctx =>
+        {
+            if (Time.timeSinceLevelLoad > 3f) Navigation.instance.ChangeScene(SceneManager.GetActiveScene().name);
+
+        };
     }
 
     // Update is called once per frame
