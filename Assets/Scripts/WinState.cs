@@ -21,7 +21,6 @@ public class WinState : MonoBehaviour
             // In case timescale persists through levels
             Time.timeScale = 1;
         });
-        Cursor.lockState = CursorLockMode.None;
     }
 
     void OnTriggerEnter(Collider other)
@@ -35,6 +34,8 @@ public class WinState : MonoBehaviour
 
     void LevelComplete()
     {
+        Cursor.lockState = CursorLockMode.None;
+
         var timeValue = TimerController.Instance.TimerValue;
         var time = TimeSpan.FromSeconds(timeValue);
         var stringBuilder = new StringBuilder();

@@ -92,7 +92,6 @@ public class player : MonoBehaviour
         OnDeath += () => _checkpointManager.RespawnPlayerOnDeath(transform);
         iactions.Interaction.Restart.performed += ctx => Navigation.instance.ChangeScene(SceneManager.GetActiveScene().name);
         Cursor.lockState = CursorLockMode.Locked;
-
     }
 
     // Update is called once per frame
