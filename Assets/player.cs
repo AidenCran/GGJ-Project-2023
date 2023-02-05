@@ -98,6 +98,7 @@ public class player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         Ray r = new Ray(transform.position, Vector3.up * sphereHeight);
         RaycastHit hit;
 
