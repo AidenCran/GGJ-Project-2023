@@ -832,7 +832,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1093527579}
+      - m_Target: {fileID: 171907652}
         m_TargetAssemblyTypeName: NavigationReference, Assembly-CSharp
         m_MethodName: ChangeScene
         m_Mode: 5
@@ -841,7 +841,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Level 1
+          m_StringArgument: L1
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &171907650
@@ -4670,7 +4670,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1093527579}
+      - m_Target: {fileID: 1027072719}
         m_TargetAssemblyTypeName: NavigationReference, Assembly-CSharp
         m_MethodName: ChangeScene
         m_Mode: 5
@@ -4679,7 +4679,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Level 2
+          m_StringArgument: L2
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1027072717
@@ -4989,9 +4989,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1093527579}
+      - m_Target: {fileID: 171907647}
         m_TargetAssemblyTypeName: NavigationReference, Assembly-CSharp
-        m_MethodName: ChangeScene
+        m_MethodName: 
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -19,8 +19,10 @@ public class NavigationReference : MonoBehaviour
 
     public void ChangeScene(string str)
     {
-        _navigation.ChangeScene(str);
+        _canvasGroup.alpha = 1;
+        StartCoroutine(LoadSceneAsync(sceneName));
     }
+
 
     public void Quit() => _navigation.Quit();
 }
