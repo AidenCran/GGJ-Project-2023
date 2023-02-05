@@ -17,6 +17,9 @@ public class bouncePad : MonoBehaviour
 
     public bool stun;
 
+    public AudioClip sound;
+
+
     void OnTriggerEnter(Collider other)
     {
         Vector3 vel = other.attachedRigidbody.velocity;
@@ -30,7 +33,7 @@ public class bouncePad : MonoBehaviour
 
         player p;
         if (stun && other.TryGetComponent(out p)) p.Stun();
-
+        soundPool.Play(sound, transform.position);
     }
 
 

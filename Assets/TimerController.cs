@@ -64,13 +64,13 @@ public class TimerController : MonoBehaviour
     void Start()
     {
         // Setting Max Val = Time to beat
-        firstPlaceSlider.DOValue(firstPlaceSlider.maxValue, FirstPlaceTime).SetEase(Ease.InQuad);
+        firstPlaceSlider.DOValue(0f, FirstPlaceTime).SetEase(Ease.InQuad);
         firstColour.DOColor(endColor, FirstPlaceTime).onComplete += () => OnFirstPlaceTimeout?.Invoke();
         
-        secondPlaceSlider.DOValue(secondPlaceSlider.maxValue, SecondPlaceTime).SetEase(Ease.InQuad);;
+        secondPlaceSlider.DOValue(0f, SecondPlaceTime).SetEase(Ease.InQuad);;
         secondColour.DOColor(endColor, SecondPlaceTime).onComplete += () => OnSecondPlaceTimeout?.Invoke();
 
-        thirdPlaceSlider.DOValue(thirdPlaceSlider.maxValue, ThirdPlaceTime).SetEase(Ease.InQuad);;
+        thirdPlaceSlider.DOValue(0f, ThirdPlaceTime).SetEase(Ease.InQuad);;
         thirdColour.DOColor(endColor, ThirdPlaceTime).onComplete += () => OnThirdPlaceTimeout?.Invoke();
 
         firstPlaceText.text = $"FIRST\n<size=15>{FirstPlaceTime} Seconds</size>";

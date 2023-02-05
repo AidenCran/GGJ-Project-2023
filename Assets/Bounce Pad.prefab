@@ -59,7 +59,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7182fbece97025441b477ab3ab49a677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bounceHeight: 10
+  bounceForce: {x: 0, y: 0, z: 0}
+  x: 0
+  y: 0
+  z: 0
+  stun: 0
+  sound: {fileID: 8300000, guid: ef47f24ed550d0f408ffb29cc8dd4975, type: 3}
 --- !u!1 &1185505606311165985
 GameObject:
   m_ObjectHideFlags: 0
