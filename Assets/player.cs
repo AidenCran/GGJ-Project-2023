@@ -5,6 +5,27 @@ using UnityEngine;
 
 public class player : MonoBehaviour
 {
+    #region Singleton
+
+    public static player Instance { get; private set; }
+
+    private void Singleton()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        DontDestroyOnLoad(gameObject);
+    }
+
+    #endregion
+    
     public Input iactions;
     [System.NonSerialized]
     public Rigidbody rb;
@@ -60,6 +81,8 @@ public class player : MonoBehaviour
         iactions.Enable();
         rb = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Locked;
+        
+        Singleton();
     }
 
     void Start()

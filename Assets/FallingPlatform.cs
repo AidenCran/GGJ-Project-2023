@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -25,8 +26,10 @@ public class FallingPlatform : MonoBehaviour
 
     IEnumerator ReleasePlatform()
     {
-        yield return Helper.GetWait(delay);
-        
+        var delayInThird = delay / 3;
+
+        yield return transform.DOPunchRotation(new Vector3(2, 2, 2), delay).WaitForCompletion();
+
         // Release Constraints
         _rb.constraints = RigidbodyConstraints.None;
     }
