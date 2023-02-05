@@ -54,13 +54,18 @@ public class TimerController : MonoBehaviour
     public float FirstPlaceTime = 90f;
     public float SecondPlaceTime = 150f;
     public float ThirdPlaceTime = 180f;
-    
-    float _timerValue;
+
+    public float TimerValue { get; private set; }
 
     [HideInInspector] public UnityEvent OnFirstPlaceTimeout;
     [HideInInspector] public UnityEvent OnSecondPlaceTimeout;
     [HideInInspector] public UnityEvent OnThirdPlaceTimeout;
-    
+
+    void Awake()
+    {
+        Singleton();
+    }
+
     void Start()
     {
         // Setting Max Val = Time to beat
@@ -80,8 +85,8 @@ public class TimerController : MonoBehaviour
 
     void Update()
     {
-        _timerValue += 1 * Time.deltaTime;
-        var time = TimeSpan.FromSeconds(_timerValue);
+        TimerValue += 1 * Time.deltaTime;
+        var time = TimeSpan.FromSeconds(TimerValue);
         totalTimerText.text = $"{time.Minutes}:{time.Seconds.ToString().PadLeft(2,'0')}.{time.Milliseconds.ToString().PadLeft(3,'0')}";
     }
 }
