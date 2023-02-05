@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4548828216552775501}
   - component: {fileID: 4548828216552775506}
   - component: {fileID: 4548828216552775507}
+  - component: {fileID: 1769344000033319567}
   m_Layer: 0
   m_Name: MenuButton
   m_TagString: Untagged
@@ -121,7 +122,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4548828216552775506}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1769344000033319567}
+        m_TargetAssemblyTypeName: NavigationReference, Assembly-CSharp
+        m_MethodName: ChangeScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: MainMenu
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1769344000033319567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4548828216552775505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55c443d510d78534e9d13997cf6af1b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4548828216577709322
 GameObject:
   m_ObjectHideFlags: 0
@@ -323,7 +348,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Menu
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e3440d67e25fb59409311a12bbf6796a, type: 2}
   m_sharedMaterial: {fileID: 5333582702582313835, guid: e3440d67e25fb59409311a12bbf6796a, type: 2}
