@@ -10,6 +10,7 @@ public class VineWhip : MonoBehaviour
     public LayerMask lm;
     public player p;
     public Animator anim;
+    public AudioClip sound;
 
     void Start()
     {
@@ -26,6 +27,7 @@ public class VineWhip : MonoBehaviour
 
     IEnumerator whip()
     {
+        soundPool.Play(sound, Camera.main.transform.position,0.2f);
         yield return new WaitForSeconds(0.2f);
         Ray r = new Ray(transform.position, transform.forward);
         // Raycast forward

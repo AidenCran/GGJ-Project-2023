@@ -37,7 +37,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 213.8, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3079515896755202336
 CanvasRenderer:
@@ -69,8 +69,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Checkpoint!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e3440d67e25fb59409311a12bbf6796a, type: 2}
+  m_sharedMaterial: {fileID: 5333582702582313835, guid: e3440d67e25fb59409311a12bbf6796a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -258,7 +258,6 @@ GameObject:
   - component: {fileID: 5591258929738398858}
   - component: {fileID: 5591258929738398857}
   - component: {fileID: 5591258929738398856}
-  - component: {fileID: 5591258929738398863}
   m_Layer: 0
   m_Name: Checkpoint
   m_TagString: Untagged
@@ -308,18 +307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 984979603e451c74999d41755ef0701b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5591258929738398863
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5591258929738398862}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4080c9e2711e0d241b1e450d3cb4d1a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  sound: {fileID: 8300000, guid: 63de80d1d88e82847985a7f91b87e870, type: 3}
 --- !u!1 &7541060316853608242
 GameObject:
   m_ObjectHideFlags: 0

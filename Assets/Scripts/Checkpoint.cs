@@ -6,6 +6,7 @@ using UnityEngine;
 public class Checkpoint : MonoBehaviour
 {
     CheckpointManager _checkpointManager;
+    public AudioClip sound;
 
     void Start()
     {
@@ -18,6 +19,8 @@ public class Checkpoint : MonoBehaviour
         {
             // Add UI Display | Checkpoint Activated
             Debug.Log("Checkpoint Activated");
+
+            soundPool.Play(sound, transform.position);
 
             _checkpointManager.SetCheckpoint?.Invoke(this);
         }

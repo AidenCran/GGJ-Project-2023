@@ -99,7 +99,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1.86
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &774878051777730697
 Rigidbody:
@@ -131,7 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   throwSound: {fileID: 8300000, guid: 646aa43aca0f65f49885233c878ccba8, type: 3}
   hitSound: {fileID: 8300000, guid: 98b5e033ea549384c86f37e81692ed56, type: 3}
-  ThrowSpeed: 14
+  ThrowSpeed: 25
   platformPrefab: {fileID: 9138272103504130536, guid: b175484d5f3052043aacc6a63c6db466, type: 3}
 --- !u!1 &3629876216373241912
 GameObject:
